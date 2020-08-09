@@ -1,7 +1,7 @@
 name: "first-website"
 output_dir: "."
 navbar:
-  title: "My Beautiful Website"
+  title: "My Geog 176A Website"
   left:
     - text: "My CV"
       href: CV.pdf

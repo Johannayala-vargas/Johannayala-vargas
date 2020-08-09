@@ -4,8 +4,8 @@ title: "Projects"
 
 In the summer of 2020 I took a class GIS course based in R. I wrote some code, and did some cool data science. Here is a collection of links! 
 
-## [Building a project website]()
+## [Building a project website](https://github.com/Johannayala-vargas/Johannayala-vargas.github.io)
 
-- In this assignment we built a static users site with Github Pages 
-- Includes a github repo for access to all the code.
-- Look at how high quality my work is!
+- In this first lab Lab01, we created a website using Github Pages, where all of our work will be on display.
+-In this project, we learned some handy uses for R Markdown, Viewer, and the ‘knit’ function to see our code come to life on a webpage.
+-Learn how to put together our own website.
