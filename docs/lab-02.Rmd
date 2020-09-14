@@ -1,0 +1,194 @@
+---
+title: "Geography 176A Lab-02"
+author: '[Johann Ayala-Vargas](https://mikejohnson51.github.io)'
+subtitle: 'Lab 03: COVID-19 Pandemic'
+output:
+  html_document:
+    theme: journal
+  pdf_document: default
+---
+install.packages("zoo")
+#installing zoo package
+```{r}
+library(tidyverse)
+library(knitr)
+library(readxl)
+library(zoo)
+```
+#this adds all of these packages into our library for this project
+
+
+#Question 1:
+
+```{r}
+url = 'https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv'
+
+covid = read_csv(url)
+```
+
+
+#Importing data via url
+```{r}
+url = 'https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv'
+
+covid = read_csv(url)
+```
+
+
+
+#Filtering our data to only generate results for New Cases each day to only California Counties\
+
+#Dataframe showing Cumulative cases in descending order
+```{r}
+covid2 = covid %>%  
+  filter(state == ("California")) %>% 
+  group_by(county) %>% 
+  mutate(newCases = cases - lag(cases)) %>%
+  ungroup() %>% 
+  filter(date == max(date))%>%
+  select(state, county, cases, newCases) %>% 
+  slice_max(cases, n = 5)
+```
+
+#Dataframe showing new cases in descending order
+```{r}
+covid3 = covid %>%  
+  filter(state == ("California")) %>% 
+  group_by(county) %>% 
+  mutate(newCases = cases - lag(cases)) %>%
+  ungroup() %>% 
+  filter(date == max(date))%>%
+  select(state, county, cases, newCases) %>% 
+  slice_max(newCases, n = 5)
+```
+
+
+
+
+#shows our data table with captions for how to interpret the results. 
+```{r}
+knitr::kable(covid3, 
+             caption = "Most New Cases California Counties",
+             col.names = c("State", "County", "Cases", "New Cases"))
+knitr::kable(covid2, 
+             caption = "Most Cumulative Cases California Counties",
+             col.names = c("State", "County", "Cases", "New Cases"))
+
+```
+
+#allows us to read excel files for the data we are about to import.
+```{r}
+library(readxl)
+```
+
+
+#loading the downloaded excel data
+```{r}
+library(readxl)
+Pop <- read_excel("~/github/geog-176A-labs/data/PopulationEstimates.xls", skip = 2)
+```
+
+```{r}
+Pop2 = Pop %>%
+  select(fips = FIPStxt, state = State, Area_Name, pop_2019 = POP_ESTIMATE_2019) %>%
+  right_join(covid, pop, by = "fips") %>%
+  filter(date >= max(date)-13, state.y == "California") %>% 
+  group_by(county) %>%
+  mutate(cumul_per_cap = sum(cases) / pop_2019) %>%
+  mutate(new_cases_per_cap = sum(cases - lag(cases), na.rm= TRUE)/ pop_2019) %>%
+  select(county, cumul_per_cap, new_cases_per_cap)
+
+(most_new_cases_per_cap = Pop2 %>%
+  slice_max(new_cases_per_cap, n = 5) %>%
+  select(county, cumul_per_cap))
+
+(most_cumul_per_cap = Pop2 %>%
+    slice_max(cumul_per_cap, n = 5) %>%
+  select(county, cumul_per_cap))
+  
+library(formattable)
+
+knitr::kable(most_new_cases_per_cap,
+             caption = "Most New Cases Per Capita: California",
+             col.names = c("County", "New Cases Per Capita"),
+             format.args = list(big.mark = ","))
+
+knitr::kable(most_cumul_per_cap,
+             caption = "Most Cumulative Cases Per Capita: California",
+             col.names = c("County", "Cumulative Cases Per Capita"),
+             format.args = list(big.mark = ","))
+
+
+
+```
+
+
+
+
+
+```{r}
+names(Pop)
+dim(Pop)
+nrow(Pop)
+```
+
+
+
+
+```{r}
+#last14days =  Pop2 %>%
+  #filter(date > max(date) - 13) %>%
+  #group_by(county, pop_2019)%>%
+  #summarise(newCases = sum(newCases)) %>%
+  #ungroup() %>%
+  #mutate(casePer100 = newCases / (pop_2019 / 100000)) %>%
+  #filter(casePer100 <= 100) %>%
+  #pull(county)
+
+#could not get code to run
+```
+
+
+
+
+#Question 2
+
+#filters the data like covid2, but now this data also includes values for New York, Florida and Louisiana
+
+```{r}
+covid3 = covid %>%  
+  filter(state == c("California", "New York", "Florida", "Louisiana")) %>% 
+  group_by(county) %>% 
+  mutate(newCases = cases - lag(cases)) %>%
+  ungroup() %>% 
+  filter(date == max(date))%>%
+  select(state, county, cases, newCases)
+```
+
+
+```{r}
+  
+Most_cumulative2 = covid3[order(-covid3$cases),]
+
+Most_new2 = covid3[order(-covid3$newCases),]
+
+covid3 %>% 
+  group_by(state) %>% 
+  mutate(roll_mean = rollmean(cases, 2, na.pad = T))
+Most_cumulative2 = covid3[order(-covid3$cases),]
+
+
+Most_new2 = covid3[order(-covid3$newCases),]
+
+
+#ggplot(data = Most_new2, aes(x = newCases, y = roll_mean)) +
+  #geom_point(aes(color = county, size = cases)) +
+  #labs(title = "Roll Mean of Corona Virus Counts as a Fucntion of Daily New Cases Per State", x = "Daily New Cases", y = "Roll Mean", color = "", size = "Cases") +
+  #facet_wrap(~state)+
+  #theme_bw()
+
+#could not get code to run
+
+```
+
+
