@@ -1,0 +1,22 @@
+name: "first-website"
+output_dir: "."
+navbar:
+  title: "Johann's GEOG 176A Website"
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "Johann's CV"
+      icon: fa-file-pdf-o
+      href: CV.pdf
+    - text: "My GIS Work" 
+      icon: fa-globe
+      href: geog176A.html
+    
+  right:
+    - icon: fa-github
+      href: https://github.com/Johannayala-vargas/Johannayala-vargas
+output:
+  html_document:
+    theme: darkly
+    

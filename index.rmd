@@ -1,0 +1,21 @@
+---
+title: "About Me"
+---
+  
+<center>
+# Hi, I'm Johann Ayala-Vargas. <i class="fa fa-soccer-ball-o"></i>
+</center>
+
+![That's me!]("/Users/Allan/Desktop/Grad1.jpg")
+
+  
+I am a 23 year old student born and raised on the Central Coast of California. My day-to-day hobbies include exercising at my local gym, taking my dog out on walks, and cooking for my family members. In my free time, I enjoy spending time with friends, photographing viewpoints around Santa Barbara, and doing anything involved with Soccer, whether that may be playing or watching a live game. 
+
+
+I'm a 4th year Physical Geography major at UC Santa Barbara with an emphasis on Geographic Information Systems. This quarter, I am learning a lot about GIS based in R. You can follow my progress on my [Github](https://github.com/Johannayala-vargas/Johannayala-vargas) server.
+
+You can also find me on [Instagram](https://www.instagram.com/indigohann_47/) or contact me via email at Johannayala-vargas@ucsb.edu
+
+
+
+

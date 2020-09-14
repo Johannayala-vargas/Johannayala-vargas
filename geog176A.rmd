@@ -1,0 +1,47 @@
+---
+title: "Projects"
+---
+
+In the summer of 2020 I took a class GIS course based in R. I wrote some code, and did some cool data science. Here is a collection of my links! 
+
+## [Building a project website](https://github.com/Johannayala-vargas/Johannayala-vargas.github.io)
+
+- In this first lab, we created a website using Github Pages, where all of our work will be on display.
+
+- In this project, we learned some handy uses for R Markdown, Viewer, and the ‘knit’ function to see our code come to life on a webpage.
+
+- I also learned how to personalize and get creative on my own website.
+
+## [Lab 2: Data Wrangling](github/geog-176A-labs/docs/lab-02.rmd)
+
+- In this lab, we practiced data wrangling and visualization using real-time COVID-19 data issued by the New York Times.
+
+- We emphasized honing our data manipulation skills by filtering data, joining datasets, and using visualizing this analysis using ggplot. 
+
+## [Lab 3: Projections, Distances, and Mapping]
+
+- In this lab, we worked with simple feature objects and geos measures, emphasizing on feature aggregations (combines/unions), coordinate reference systems, and distance measurements. 
+
+- The objective was to to replicate the ACLU assessment that approximately two-thirds of the USA population reside within the 100 mile "Border Zone". 
+
+## [Lab 4: Tesselations, Spatial Joins and Point-in-Polygon]
+
+- In this lab, we worked with the National Dams Inventory where we honed our skills in geometry simplification, centroid generation, and tesselations. 
+
+- The tesselations were used to explore the distributions of dams across the USA and discussed teh challenges with the Modifiable Area Unit Problem (MAUP).
+
+## [Lab 5: Raster Analysis]
+
+- In this lab, we worked with multiband raster files to detect a flood event in the city of Palo, Iowa. 
+
+- From there, we then used data manipulation of the raster data to draw meaningful conclusions about the flood area. 
+
+- I learned a lot about creating my own leaflets/Mapview commands which will be useful to estract and classify real-time flood events, resource allocations during the events, and damage assessments post events in the near future. 
+
+## [Lab 6: Terrain Analysis]
+
+- In this lab, we estimated the number of buildings impacted in the 2017 Santa Barbara flood event along Mission Creek using data from API's( NLDI, OSM, AWS Elevation tiles).
+
+- We applied a new skill of using whitebox frontend to generate a Height Above Nearest Draining layer for the Mission Creek watershed.
+
+- We then converted this layer into a Flood Inudation Map Library with structural damage assessments. 
