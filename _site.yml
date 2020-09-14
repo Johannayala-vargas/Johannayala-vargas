@@ -15,7 +15,7 @@ navbar:
     
   right:
     - icon: fa-github
-      href: https://github.com/Johannayala-vargas/Johannayala-vargas
+      href: https://github.com/Johannayala-vargas/Johannayala-vargas.github.io
 output:
   html_document:
     theme: darkly

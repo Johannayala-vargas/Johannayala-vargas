@@ -12,7 +12,7 @@ In the summer of 2020 I took a class GIS course based in R. I wrote some code, a
 
 - I also learned how to personalize and get creative on my own website.
 
-## [Lab 2: Data Wrangling]("/docs/lab-02.html")
+## [Lab 2: Data Wrangling](https://johannayala-vargas.github.io/docs/lab-02.html)
 
 - In this lab, we practiced data wrangling and visualization using real-time COVID-19 data issued by the New York Times.
 
