@@ -18,19 +18,19 @@ In the summer of 2020 I took a class GIS course based in R. I wrote some code, a
 
 - We emphasized honing our data manipulation skills by filtering data, joining datasets, and using visualizing this analysis using ggplot. 
 
-## [Lab 3: Projections, Distances, and Mapping]
+## [Lab 3: Projections, Distances, and Mapping](https://johannayala-vargas.github.io/docs/lab3.html)
 
 - In this lab, we worked with simple feature objects and geos measures, emphasizing on feature aggregations (combines/unions), coordinate reference systems, and distance measurements. 
 
 - The objective was to to replicate the ACLU assessment that approximately two-thirds of the USA population reside within the 100 mile "Border Zone". 
 
-## [Lab 4: Tesselations, Spatial Joins and Point-in-Polygon]
+## [Lab 4: Tesselations, Spatial Joins and Point-in-Polygon](https://johannayala-vargas.github.io/docs/lab_4.html)
 
 - In this lab, we worked with the National Dams Inventory where we honed our skills in geometry simplification, centroid generation, and tesselations. 
 
 - The tesselations were used to explore the distributions of dams across the USA and discussed teh challenges with the Modifiable Area Unit Problem (MAUP).
 
-## [Lab 5: Raster Analysis]
+## [Lab 5: Raster Analysis](https://johannayala-vargas.github.io/docs/Lab-5.html)
 
 - In this lab, we worked with multiband raster files to detect a flood event in the city of Palo, Iowa. 
 

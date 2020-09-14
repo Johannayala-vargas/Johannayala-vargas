@@ -6,7 +6,7 @@ title: "About Me"
 # Hi, I'm Johann Ayala-Vargas. <i class="fa fa-soccer-ball-o"></i>
 </center>
 
-![That's me!](https://johannayala-vargas.github.io/Grad1.jpg)
+[That's me!](https://johannayala-vargas.github.io/Grad1.jpg)
 
   
 I am a 23 year old student born and raised on the Central Coast of California. My day-to-day hobbies include exercising at my local gym, taking my dog out on walks, and cooking for my family members. In my free time, I enjoy spending time with friends, photographing viewpoints around Santa Barbara, and doing anything involved with Soccer, whether that may be playing or watching a live game. 
