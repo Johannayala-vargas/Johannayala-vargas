@@ -24,7 +24,7 @@ In the summer of 2020 I took a class GIS course based in R. I wrote some code, a
 
 - The objective was to to replicate the ACLU assessment that approximately two-thirds of the USA population reside within the 100 mile "Border Zone". 
 
-## [Lab 4: Tesselations, Spatial Joins and Point-in-Polygon](https://johannayala-vargas.github.io/docs/lab_4.html)
+## [Lab 4: Tesselations, Spatial Joins and Point-in-Polygon](https://johannayala-vargas.github.io/docs/Lab-4.html)
 
 - In this lab, we worked with the National Dams Inventory where we honed our skills in geometry simplification, centroid generation, and tesselations. 
 
