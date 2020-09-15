@@ -4,7 +4,7 @@ title: "Projects"
 
 In the summer of 2020 I took a class GIS course based in R. I wrote some code, and did some cool data science. Here is a collection of my links! 
 
-## [Building a project website](https://github.com/Johannayala-vargas/Johannayala-vargas.github.io)
+## [Building a project website](https://johannayala-vargas.github.io)
 
 - In this first lab, we created a website using Github Pages, where all of our work will be on display.
 
