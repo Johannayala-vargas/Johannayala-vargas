@@ -18,17 +18,23 @@ In the summer of 2020 I took a class GIS course based in R. I wrote some code, a
 
 - We emphasized honing our data manipulation skills by filtering data, joining datasets, and using visualizing this analysis using ggplot. 
 
+(https://johannayala-vargas.github.io/img/Lab2.png)
+
 ## [Lab 3: Projections, Distances, and Mapping](https://johannayala-vargas.github.io/docs/lab3.html)
 
 - In this lab, we worked with simple feature objects and 'geos' measures, emphasizing on feature aggregations (combines/unions), coordinate reference systems, and distance measurements. 
 
 - The objective was to to replicate the ACLU assessment that approximately two-thirds of the USA population reside within the 100 mile "Border Zone". 
 
+(https://johannayala-vargas.github.io/img/Lab3.png)
+
 ## [Lab 4: Tesselations, Spatial Joins and Point-in-Polygon](https://johannayala-vargas.github.io/docs/Lab-4.html)
 
 - In this lab, we worked with the National Dams Inventory where we honed our skills in geometry simplification, centroid generation, and tesselations. 
 
 - The tesselations were used to explore the distributions of dams across the USA and discussed the challenges with the Modifiable Area Unit Problem (MAUP).
+
+(https://johannayala-vargas.github.io/img/Lab4.png)
 
 ## [Lab 5: Raster Analysis](https://johannayala-vargas.github.io/docs/Lab-5.html)
 
@@ -38,6 +44,8 @@ In the summer of 2020 I took a class GIS course based in R. I wrote some code, a
 
 - I learned a lot about creating my own leaflets/Mapview commands which will be useful to estract and classify real-time flood events, resource allocations during the events, and damage assessments post events in the near future. 
 
+(https://johannayala-vargas.github.io/img/Lab5.png)
+
 ## [Lab 6: Terrain Analysis](https://johannayala-vargas.github.io/docs/lab-6.html)
 
 - In this lab, we estimated the number of buildings impacted in the 2017 Santa Barbara flood event along Mission Creek using data from API's( NLDI, OSM, AWS Elevation tiles).
@@ -45,3 +53,5 @@ In the summer of 2020 I took a class GIS course based in R. I wrote some code, a
 - We applied a new skill of using whitebox frontend to generate a Height Above Nearest Draining layer for the Mission Creek watershed.
 
 - We then converted this layer into a Flood Inudation Map Library with structural damage assessments. 
+
+(https://johannayala-vargas.github.io/img/Lab6.png)
