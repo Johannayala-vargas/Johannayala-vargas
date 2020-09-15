@@ -38,7 +38,7 @@ In the summer of 2020 I took a class GIS course based in R. I wrote some code, a
 
 - I learned a lot about creating my own leaflets/Mapview commands which will be useful to estract and classify real-time flood events, resource allocations during the events, and damage assessments post events in the near future. 
 
-## [Lab 6: Terrain Analysis]
+## [Lab 6: Terrain Analysis](https://johannayala-vargas.github.io/docs/Lab-6.html)
 
 - In this lab, we estimated the number of buildings impacted in the 2017 Santa Barbara flood event along Mission Creek using data from API's( NLDI, OSM, AWS Elevation tiles).
 
