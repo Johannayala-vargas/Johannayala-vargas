@@ -20,7 +20,7 @@ In the summer of 2020 I took a class GIS course based in R. I wrote some code, a
 
 ## [Lab 3: Projections, Distances, and Mapping](https://johannayala-vargas.github.io/docs/lab3.html)
 
-- In this lab, we worked with simple feature objects and geos measures, emphasizing on feature aggregations (combines/unions), coordinate reference systems, and distance measurements. 
+- In this lab, we worked with simple feature objects and 'geos' measures, emphasizing on feature aggregations (combines/unions), coordinate reference systems, and distance measurements. 
 
 - The objective was to to replicate the ACLU assessment that approximately two-thirds of the USA population reside within the 100 mile "Border Zone". 
 
@@ -28,7 +28,7 @@ In the summer of 2020 I took a class GIS course based in R. I wrote some code, a
 
 - In this lab, we worked with the National Dams Inventory where we honed our skills in geometry simplification, centroid generation, and tesselations. 
 
-- The tesselations were used to explore the distributions of dams across the USA and discussed teh challenges with the Modifiable Area Unit Problem (MAUP).
+- The tesselations were used to explore the distributions of dams across the USA and discussed the challenges with the Modifiable Area Unit Problem (MAUP).
 
 ## [Lab 5: Raster Analysis](https://johannayala-vargas.github.io/docs/Lab-5.html)
 
@@ -38,7 +38,7 @@ In the summer of 2020 I took a class GIS course based in R. I wrote some code, a
 
 - I learned a lot about creating my own leaflets/Mapview commands which will be useful to estract and classify real-time flood events, resource allocations during the events, and damage assessments post events in the near future. 
 
-## [Lab 6: Terrain Analysis](https://johannayala-vargas.github.io/docs/Lab-6.html)
+## [Lab 6: Terrain Analysis](https://johannayala-vargas.github.io/docs/lab-6.html)
 
 - In this lab, we estimated the number of buildings impacted in the 2017 Santa Barbara flood event along Mission Creek using data from API's( NLDI, OSM, AWS Elevation tiles).
 
