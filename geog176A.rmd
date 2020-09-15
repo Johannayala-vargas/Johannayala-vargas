@@ -54,4 +54,4 @@ In the summer of 2020 I took a class GIS course based in R. I wrote some code, a
 
 - We then converted this layer into a Flood Inudation Map Library with structural damage assessments. 
 
-(https://johannayala-vargas.github.io/img/Lab6.png)
+(https://johannayala-vargas.github.io/img/lab6.png)
