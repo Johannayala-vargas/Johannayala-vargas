@@ -1,0 +1,180 @@
+---
+title: "Lab 6"
+author: "Johann"
+subtitle: "Terrain Analysis"
+date: "9/14/2020"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, out.width = "75%", fig.align = 'center')
+```
+
+```{r, include=FALSE}
+library(sf)        # vector manipulation
+library(raster)    # raster manipulation
+library(fasterize) # "faster" raster
+library(whitebox)  # terrain analysis
+library(dplyr)
+library(tidyverse)
+library(gifski)
+library(knitr)
+
+# Data libraries
+library(osmdata)   # OSM API
+library(elevatr)   # Elevation  Web Tiles
+```
+
+##Question 1: COLLECTING DATA
+
+#Basin Boundary
+```{r}
+basin = read_sf("https://labs.waterdata.usgs.gov/api/nldi/linked-data/nwissite/USGS-11119750/basin")
+write_sf(basin, dsn = "/Users/Allan/github/Johannayala-vargas.github.io/data/USGS-11119750.gpkg")
+```
+
+
+#Elevation Data
+```{r}
+basin_elevation = elevatr::get_elev_raster(basin, z = 13, units = "feet") %>%
+  crop(basin) %>% 
+  mask(basin) 
+
+writeRaster(basin_elevation, filename = "/Users/Allan/github/Johannayala-vargas.github.io/data/basin_elevation.tif", overwrite = TRUE)
+elevation_raster = raster("/Users/Allan/github/Johannayala-vargas.github.io/data/basin_elevation.tif")
+```
+
+
+#Buildings, railway and river-network data
+```{r}
+bb_basin = st_bbox(basin) %>% 
+  st_as_sfc() %>% 
+  st_transform(4326)
+
+osm = osmdata::opq(bb_basin) %>% 
+  add_osm_feature(key = 'building') %>% 
+  osmdata_sf()
+
+building = osm$osm_polygon %>% 
+  st_transform(crs(basin)) %>% 
+  st_intersection(basin) %>% 
+  st_centroid()
+
+railway = building %>% 
+  dplyr::filter(amenity == "railway")
+
+stream = osmdata::opq(bb_basin) %>% 
+  add_osm_feature('waterway', 'stream') %>% 
+  osmdata_sf()
+
+river = stream$osm_lines %>% 
+  st_transform(crs(basin)) %>% 
+  st_intersection(basin)
+```
+
+
+#Question 2: TERRAIN ANALYSIS
+
+#Hillshade
+```{r}
+wbt_hillshade("/Users/lfinn443/github/liam.finn/data/basin_elevation.tif", "/Users/lfinn443/github/liam.finn/data/hillshade.tif")
+
+hillshade = raster("/Users/Allan/github/Johannayala-vargas.github.io/data/basin_elevation.tif")
+
+plot(hillshade, axes = FALSE, box = FALSE, col = gray.colors(256, alpha = 0.5), main = "Hillshade", legend = FALSE)
+plot(river, add = TRUE, col = "blue")
+```
+```{r}
+river_raster = river %>% 
+  st_transform(5070) %>% 
+  st_buffer(10) %>% 
+  st_transform(crs(elevation_raster))
+river_raster = fasterize::fasterize(river_raster, elevation_raster)
+
+writeRaster(river_raster, "/Users/Allan/github/Johannayala-vargas.github.io/data/river_raster.tif", overwrite = T)
+river_raster = raster("/Users/Allan/github/Johannayala-vargas.github.io/data/river_raster.tif")
+
+```
+
+```{r}
+wbt_breach_depressions("/Users/Allan/github/Johannayala-vargas.github.io/data/basin_elevation.tif", "/Users/Allan/github/Johannayala-vargas.github.io/data/corrected-surface.tif")
+
+wbt_elevation_above_stream("/Users/Allan/github/Johannayala-vargas.github.io/data/corrected-surface.tif", "/Users/Allan/github/Johannayala-vargas.github.io/data/river_raster.tif", "/Users/Allan/github/Johannayala-vargas.github.io/data/HAND.tif")
+```
+
+```{r}
+Hand = raster("/Users/Allan/github/Johannayala-vargas.github.io/data/HAND.tif")
+
+Hand = Hand + 3.69
+
+Hand[river_raster == 1] = 0
+
+writeRaster(Hand, "/Users/Allan/github/Johannayala-vargas.github.io/data/HAND_2.tif", overwrite = T)
+```
+
+##Question 3: 2017 Impact Assessment
+```{r}
+Hand_2 = raster("/Users/Allan/github/Johannayala-vargas.github.io/data/HAND_2.tif")
+
+Hand_2[Hand_2 > 10.02] = NA
+
+plot(hillshade, axes = FALSE, box = FALSE, col = gray.colors(256, alpha = 0.5), main = "Hillshade", legend = FALSE)
+plot(Hand_2, add = TRUE, col = rev(blues9))
+plot(railway, add = TRUE, col = "green", cex = 1, pch = 16)
+```
+
+```{r}
+# Estimate the Impacts
+# Extract building flood depth
+cols2 = ifelse(!is.na(raster::extract(Hand_2, building)), "red", "black")
+
+stage = 10.02
+
+# Plot impacts
+
+plot(hillshade, axes = FALSE, box = FALSE, col = gray.colors(256, alpha = 0.5), legend = FALSE, main = paste(sum(cols2 =="red"), "Impacted Structures,", stage, "Foot Stage"), cex = 0.5)
+plot(Hand_2, add = TRUE, col = rev(blues9))
+plot(building$geometry, add = TRUE, col = cols2, cex =  .08, pch = 16)
+plot(railway, add = TRUE, col = "green", cex = 1, pch = 16)
+```
+
+
+## Extra Credit: Flood Inundation Map Library
+```{r, eval = FALSE}
+
+sb = AOI::aoi_get("Santa Barbara")
+
+hand_sb = Hand_2 %>%
+  crop(sb)
+
+
+hillshade_sb = hillshade %>%
+  crop(sb)
+
+
+
+gifski::save_gif({
+  for(i in 0:20) {
+    hand_sb = Hand_2 %>%
+      crop(sb)
+    hand_sb[hand_sb >= i] = NA
+    
+    building_sb = ifelse(!is.na(raster::extract(hand_sb, building)), "red", "black")
+    
+    sb_building = building %>%
+      mutate(sb_flooded = building_sb)
+    
+    plot(hillshade_sb, legend = FALSE, col = grey.colors(256, alpha = .5), 
+         main = paste0(sum(!is.na(sb_building$sb_flooded)), " Impacted Buildings,  ", i, " Foot Stage"))
+    plot(hand_sb, add = TRUE, col = palette(rev(blues9)))
+    plot(railway, add = TRUE, col = "green", cex = 1, pch = 16)
+    plot(sb_building, add = TRUE, col = ifelse(!is.na(sb_building$sb_flooded), "red", "black"), pch = 20, cex = .08)
+  }
+}, gif_file = "/Users/Allan/github/Johannayala-vargas.github.io/data/mission-creek-fim.gif",
+   width = 600, height = 600,
+   delay = .7, loop = TRUE
+)
+
+knitr::include_graphics(path = "/Users/Allan/github/Johannayala-vargas.github.io/data/mission-creek-fim.gif")
+```

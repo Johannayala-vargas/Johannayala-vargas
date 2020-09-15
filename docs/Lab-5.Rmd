@@ -4,6 +4,10 @@ author: "Johann Ayala-Vargas"
 date: "9/3/2020"
 output: html_document
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, out.width = "75%", fig.align = 'center')
+```
+
 ```{r}
 #Library Codes
 library(raster) # Raster Data handling
@@ -50,7 +54,7 @@ down = scenes %>%
 
 ```{r}
 #saving data to a csv file
-write.csv(down, file = "data/palo-flood.csv", row.names = FALSE)
+write.csv(down, file = "/Users/Allan/github/geog-176A-labs/data/palo-flood.csv", row.names = FALSE)
 ```
 
 

@@ -5,6 +5,10 @@ Date: 8-20-2020
 
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, out.width = "75%", fig.align = 'center')
+```
+
 ```{r}
 library(tidyverse)
 library(sf)

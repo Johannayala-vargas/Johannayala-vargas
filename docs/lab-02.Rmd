@@ -1,13 +1,18 @@
 ---
 title: "Geography 176A Lab-02"
 author: '[Johann Ayala-Vargas](https://mikejohnson51.github.io)'
-subtitle: 'Lab 03: COVID-19 Pandemic'
+subtitle: 'Lab 02: COVID-19 Pandemic'
 output:
   html_document:
     theme: journal
   pdf_document: default
 ---
-install.packages("zoo")
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, out.width = "75%", fig.align = 'center')
+```
+
+
 #installing zoo package
 ```{r}
 library(tidyverse)
